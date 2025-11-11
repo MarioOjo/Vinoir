@@ -1,10 +1,10 @@
 # Vinoir: Luxury Perfume E-Commerce Platform
 
-A sophisticated full-stack e-commerce application built with the MERN stack for a fictional luxury perfume brand. This group project demonstrates modern web development practices with a focus on user experience, authentication, and collaborative development.
+A sophisticated full-stack e-commerce application built with the MERN stack for a fictional luxury perfume brand. This group project demonstrates modern web development practices with a focus on user experience, component-driven frontend architecture, and a RESTful backend API.
 
 **Project Type**: Group Project - MERN Stack E-commerce  
 **GitHub Repository**: https://github.com/corbyn-jpg/summative-vinoir  
-**Team Members**: Tristan Leech, Chloe Robinson, Mario Ojo
+**Team Members**: Tristan Leech, Corbyn Robinson, Mario Ojo
 
 ---
 
@@ -25,11 +25,11 @@ A sophisticated full-stack e-commerce application built with the MERN stack for 
 
 ## About The Project
 
-Vinoir represents a collaborative effort to build a complete MERN stack e-commerce solution for a luxury perfume brand. The project addresses the challenge of creating an online shopping experience that balances aesthetic appeal with functional e-commerce requirements. In a competitive digital marketplace, luxury brands need platforms that reflect their premium positioning while providing seamless user journeys from discovery to purchase.
+Vinoir represents a collaborative effort to build a complete MERN stack e-commerce solution for a luxury perfume brand. The project addresses the challenge of creating an online shopping experience that balances a premium visual identity with solid engineering practices.
 
-This application was developed as a summative group project to demonstrate full-stack development capabilities, including database design, API development, frontend architecture, and team collaboration using version control systems. The project showcases how modern web technologies can create immersive brand experiences that drive engagement and conversions.
+This application was developed as a summative group project to demonstrate full-stack development capabilities, including database design, API development, frontend architecture, and team collaboration.
 
-**In 150 words or less**: Vinoir is a luxury perfume e-commerce platform built with the MERN stack that delivers a premium shopping experience. The application features a sophisticated product catalog, user authentication with innovative emoji-based security, shopping cart functionality, and responsive design. Developed collaboratively using React, Node.js, Express, and MongoDB, it demonstrates full-stack development proficiency and modern web architecture. The platform balances aesthetic elegance with robust functionality, featuring product filtering, detailed item pages, and intuitive navigation. My contributions focused on establishing the foundational codebase, implementing the responsive homepage and product grid, and defining the cohesive visual design system that enabled efficient team development and a polished final product.
+**In 150 words or less**: Vinoir is a luxury perfume e-commerce platform built with the MERN stack that delivers a premium shopping experience. The application features a sophisticated product catalog with filtering, a persistent shopping cart, user authentication, and responsive frontend components designed for a high-end aesthetic.
 
 ---
 
@@ -136,7 +136,7 @@ summative-vinoir/
 
 ### User Authentication
 - **User Registration & Login**: Traditional credential-based authentication
-- **Innovative Security**: Unique emoji-based authentication system for enhanced user experience
+- **Innovative Security**: Unique emoji-based authentication system (noted in project documentation)
 - **User Profiles**: Account management and order history
 - **Session Management**: Secure user sessions across browsing
 
@@ -158,13 +158,10 @@ summative-vinoir/
 
 ### Team Collaboration & Version Control
 
-**My Contributions**:
-- **Project Foundation**: Established initial repository structure and folder architecture
-- **Frontend Architecture**: Implemented core React component structure and routing
-- **Visual Design System**: Defined color palette, typography, and brand consistency
-- **Homepage Development**: Created responsive homepage layout and product grid
-- **Navigation System**: Built main navigation bar and cart preview functionality
-- **Component Library**: Developed reusable UI components for team consistency
+**Contributions overview (as recorded in project files)**:
+- Tristan Leech — Backend development, database architecture, API integration
+- Corbyn Robinson — Project foundation, frontend architecture, visual design system, homepage and navigation, reusable component library
+- Mario Ojo — Frontend development, component implementation, user interface features
 
 **Team Workflow**:
 - Clearly defined roles and responsibilities using project management tools
@@ -239,7 +236,7 @@ const ProductCard = ({ product = {} }) => {
 
 ### Project Highlights
 - **Successful Team Collaboration**: Demonstrated effective group development practices with clear communication and role definition
-- **Foundation Establishment**: My early work on repository structure and design system enabled efficient team progress and consistent output
+- **Foundation Establishment**: Early work on repository structure and design system enabled efficient team progress and consistent output
 - **Full-Stack Implementation**: Delivered a complete MERN stack application with database integration and responsive frontend
 - **User-Centered Design**: Created an intuitive shopping experience that balances aesthetic appeal with functional requirements
 
@@ -250,12 +247,11 @@ const ProductCard = ({ product = {} }) => {
 - **API Consistency**: Created standardized error handling and loading states for better user experience
 
 ### Personal Contribution & Learning
-
-While my direct coding contributions were limited due to personal circumstances during the project period, my foundational work proved crucial to the team's success:
+While the README records that some early contributions were foundational (project architecture, design system), the repository files indicate active frontend and backend development across the team.
 
 - **Architectural Planning**: The initial project structure and component architecture provided a solid base for team development
 - **Design System**: Established visual consistency that guided all subsequent frontend work
-- **Team Enablement**: My early contributions allowed teammates to work efficiently in parallel with minimal conflicts
+- **Team Enablement**: Early contributions allowed teammates to work efficiently in parallel with minimal conflicts
 
 ### Lessons Learned
 - **Foundation Matters**: Well-planned project structure and design systems significantly accelerate team development
@@ -288,11 +284,11 @@ Copyright © 2025 Vinoir Development Team. All rights reserved.
 - GitHub: https://github.com/TristanLeech
 - Role: Backend development, database architecture, API integration
 
-**Chloe Robinson**
+**Corbyn Robinson**
 - GitHub: https://github.com/corbyn-jpg
 - Email: 241040@virtualwindow.co.za
-- LinkedIn: www.linkedin.com/in/chloe-robinson-25b123351
-- Role: Project foundation, frontend architecture, visual design system, homepage development
+- LinkedIn: https://www.linkedin.com/in/chloe-robinson-25b123351
+- Role: Project foundation, frontend architecture, visual design system, homepage & navigation, reusable component library
 
 **Mario Ojo**
 - GitHub: https://github.com/MarioOjo
@@ -300,7 +296,7 @@ Copyright © 2025 Vinoir Development Team. All rights reserved.
 
 ### Individual Contribution Statement
 
-This project was developed collaboratively with each team member contributing according to their strengths and availability. My specific contributions focused on establishing the technical foundation and visual design system that enabled efficient parallel development and a cohesive final product.
+This project was developed collaboratively with each team member contributing according to their strengths and availability. Contributions listed above are consolidated from the repository documentation and reflect the primary areas of responsibility for each team member.
 
 ---
 
@@ -332,6 +328,6 @@ This project was developed as part of the DV200 curriculum and benefited from nu
 
 ### Special Thanks
 
-To the entire development team for their dedication and collaboration in delivering a comprehensive e-commerce solution, and to the instructional team for providing the framework and support that made this learning experience possible.
+To the entire development team for their dedication and collaboration in delivering a comprehensive e-commerce solution, and to the instructional team for providing the framework and support that made this project possible.
 
 ---
