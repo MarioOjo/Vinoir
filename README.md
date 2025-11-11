@@ -1,155 +1,337 @@
+# Vinoir: Luxury Perfume E-Commerce Platform
 
-# Vinoir Perfume Site
+A sophisticated full-stack e-commerce application built with the MERN stack for a fictional luxury perfume brand. This group project demonstrates modern web development practices with a focus on user experience, authentication, and collaborative development.
 
-This project is a react app for a fictional perfume company, Vinoir.
+**Project Type**: Group Project - MERN Stack E-commerce  
+**GitHub Repository**: https://github.com/corbyn-jpg/summative-vinoir  
+**Team Members**: Tristan Leech, Chloe Robinson, Mario Ojo
 
+---
 
+## Table of Contents
+
+- [About The Project](#about-the-project)
+- [Built With](#built-with)
+- [Getting Started](#getting-started)
+- [Project Features](#project-features)
+- [Development Process](#development-process)
+- [Final Outcome](#final-outcome)
+- [Conclusion](#conclusion)
+- [License](#license)
+- [Authors](#authors)
+- [Acknowledgements](#acknowledgements)
+
+---
+
+## About The Project
+
+Vinoir represents a collaborative effort to build a complete MERN stack e-commerce solution for a luxury perfume brand. The project addresses the challenge of creating an online shopping experience that balances aesthetic appeal with functional e-commerce requirements. In a competitive digital marketplace, luxury brands need platforms that reflect their premium positioning while providing seamless user journeys from discovery to purchase.
+
+This application was developed as a summative group project to demonstrate full-stack development capabilities, including database design, API development, frontend architecture, and team collaboration using version control systems. The project showcases how modern web technologies can create immersive brand experiences that drive engagement and conversions.
+
+**In 150 words or less**: Vinoir is a luxury perfume e-commerce platform built with the MERN stack that delivers a premium shopping experience. The application features a sophisticated product catalog, user authentication with innovative emoji-based security, shopping cart functionality, and responsive design. Developed collaboratively using React, Node.js, Express, and MongoDB, it demonstrates full-stack development proficiency and modern web architecture. The platform balances aesthetic elegance with robust functionality, featuring product filtering, detailed item pages, and intuitive navigation. My contributions focused on establishing the foundational codebase, implementing the responsive homepage and product grid, and defining the cohesive visual design system that enabled efficient team development and a polished final product.
+
+---
+
+## Built With
+
+### Frontend Technologies
+- **React** - Component-based UI framework with hooks
+- **React Router** - Client-side routing and navigation
+- **Material-UI (MUI)** - React component library for consistent UI
+- **CSS3** - Custom styling and responsive design
+- **Axios** - HTTP client for API communication
+
+### Backend Technologies
+- **Node.js** - JavaScript runtime environment
+- **Express.js** - Web application framework for RESTful APIs
+- **MongoDB** - NoSQL database for product and user data
+- **Mongoose** - MongoDB object modeling for Node.js
+
+### Additional Libraries
+- **Swiper** - Touch-enabled carousel and slider components
+- **React Lazy Load** - Performance optimization for images
+- **EmailJS** - Email service integration for communications
+
+---
+
+## Getting Started
+
+### Prerequisites
+- Node.js (v14 or higher)
+- npm (v6 or higher) or yarn package manager
+- MongoDB (local installation or cloud instance like MongoDB Atlas)
+- Modern web browser with JavaScript enabled
+
+### Installation & Setup
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/corbyn-jpg/summative-vinoir.git
+   cd summative-vinoir
+   ```
+
+2. **Backend Setup**:
+   ```bash
+   cd mem-backend
+   npm install
+   ```
+   
+   Configure environment variables:  
+   Create `mem-backend/.env` file with:
+   ```env
+   PORT=5000
+   MONGODB_URI=your_mongodb_connection_string
+   JWT_SECRET=your_jwt_secret_key
+   NODE_ENV=development
+   ```
+   
+   Start the backend server:
+   ```bash
+   npm start
+   ```
+   Expected output: Server running on port 5000 and MongoDB connected successfully
+
+3. **Frontend Setup**:
+   ```bash
+   cd ../frontend/vinoir
+   npm install
+   ```
+   
+   Start the frontend development server:
+   ```bash
+   npm start
+   ```
+
+4. **Access the application**:
+   - Frontend: http://localhost:3000
+   - Backend API: http://localhost:5000
+
+### Project Structure
+```
+summative-vinoir/
+├── mem-backend/                 # Backend API
+│   ├── models/                 # MongoDB schemas
+│   ├── routes/                 # API route handlers
+│   ├── middleware/             # Authentication & validation
+│   └── config/                 # Database configuration
+└── frontend/vinoir/            # React frontend
+    ├── src/
+    │   ├── components/         # Reusable React components
+    │   ├── pages/              # Main application views
+    │   ├── services/           # API integration
+    │   ├── styles/             # CSS and styling
+    │   └── utils/              # Helper functions
+```
+
+---
+
+## Project Features
+
+### E-commerce Functionality
+- **Product Catalog**: Comprehensive listing of perfume products with filtering options
+- **Shopping Cart**: Persistent cart functionality with item management
+- **Product Details**: Detailed product pages with descriptions and imagery
+- **Category Navigation**: Organized browsing by fragrance types and collections
+
+### User Authentication
+- **User Registration & Login**: Traditional credential-based authentication
+- **Innovative Security**: Unique emoji-based authentication system for enhanced user experience
+- **User Profiles**: Account management and order history
+- **Session Management**: Secure user sessions across browsing
+
+### User Experience
+- **Responsive Design**: Optimized experience across desktop, tablet, and mobile devices
+- **Visual Design**: Luxury aesthetic with custom color palette and typography
+- **Intuitive Navigation**: Clear information architecture and user flows
+- **Performance Optimization**: Lazy loading and efficient asset delivery
+
+### Shopping Features
+- **Product Search & Filtering**: Find products by name, category, or attributes
+- **Shopping Cart Preview**: Quick access to cart contents without page navigation
+- **Wishlist Functionality**: Save products for future consideration
+- **Responsive Product Grid**: Adaptable layout for different screen sizes
+
+---
+
+## Development Process
+
+### Team Collaboration & Version Control
+
+**My Contributions**:
+- **Project Foundation**: Established initial repository structure and folder architecture
+- **Frontend Architecture**: Implemented core React component structure and routing
+- **Visual Design System**: Defined color palette, typography, and brand consistency
+- **Homepage Development**: Created responsive homepage layout and product grid
+- **Navigation System**: Built main navigation bar and cart preview functionality
+- **Component Library**: Developed reusable UI components for team consistency
+
+**Team Workflow**:
+- Clearly defined roles and responsibilities using project management tools
+- Regular code reviews and collaborative problem-solving sessions
+- Feature branching strategy with structured merge requests
+- Comprehensive documentation for seamless knowledge transfer
+
+### Technical Architecture
+
+**Frontend Structure**:
+```javascript
+// Example component structure for product display
+const ProductCard = ({ product = {} }) => {
+  const { addToCart } = useCart();
+  const { wishlist, addToWishList, removeFromWishList } = useWishList();
+  
+  const handleAddToCart = async (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    await addToCart({ ...product, quantity: 1 });
+  };
+
+  return (
+    <Box component={Link} to={`/fragrance/${product.id}`}>
+      {/* Product image, pricing, and interaction controls */}
+    </Box>
+  );
+};
+```
+
+**Backend API Design**:
+- RESTful API architecture with consistent endpoint patterns
+- Middleware-based authentication and request validation
+- MongoDB aggregation pipelines for complex product queries
+- Error handling and appropriate HTTP status codes
+
+### Design System Implementation
+
+**Color Palette**:
+- Primary: Deep luxury tones (#1261A4, #5C1A6B)
+- Secondary: Complementary accents (#664878)
+- Neutral: Clean backgrounds (#E8E8E8)
+
+**Typography**:
+- Headings: Playfair Display (elegance, sophistication)
+- Body: Inter (clarity, readability, modern aesthetic)
+
+**Component Consistency**:
+- Standardized spacing and layout grids
+- Reusable button and form control styles
+- Consistent interaction patterns and animations
+
+---
+
+## Final Outcome
+
+### Application Features
+- **Fully Functional E-commerce Platform**: Complete shopping experience from browsing to checkout
+- **Responsive Design**: Consistent experience across all device types
+- **Database Integration**: MongoDB backend with product and user management
+- **Team Delivery**: Successful collaborative development with clear role division
+
+### Technical Achievements
+- **Modular Component Architecture**: Reusable React components with clear interfaces
+- **State Management**: Efficient handling of application state and user data
+- **API Integration**: Seamless communication between frontend and backend
+- **Performance Optimization**: Code splitting and asset optimization strategies
+
+---
+
+## Conclusion
+
+### Project Highlights
+- **Successful Team Collaboration**: Demonstrated effective group development practices with clear communication and role definition
+- **Foundation Establishment**: My early work on repository structure and design system enabled efficient team progress and consistent output
+- **Full-Stack Implementation**: Delivered a complete MERN stack application with database integration and responsive frontend
+- **User-Centered Design**: Created an intuitive shopping experience that balances aesthetic appeal with functional requirements
+
+### Technical Challenges & Solutions
+- **Team Coordination**: Established clear coding standards and component interfaces to minimize integration conflicts
+- **State Management**: Implemented React Context for shared state like cart and user authentication across components
+- **Responsive Design**: Developed mobile-first CSS strategies that maintained luxury aesthetic across breakpoints
+- **API Consistency**: Created standardized error handling and loading states for better user experience
+
+### Personal Contribution & Learning
+
+While my direct coding contributions were limited due to personal circumstances during the project period, my foundational work proved crucial to the team's success:
+
+- **Architectural Planning**: The initial project structure and component architecture provided a solid base for team development
+- **Design System**: Established visual consistency that guided all subsequent frontend work
+- **Team Enablement**: My early contributions allowed teammates to work efficiently in parallel with minimal conflicts
+
+### Lessons Learned
+- **Foundation Matters**: Well-planned project structure and design systems significantly accelerate team development
+- **Communication is Critical**: Regular team check-ins and clear documentation prevent misalignment
+- **Flexibility in Collaboration**: Adapting to team dynamics and individual circumstances is essential for project success
+- **Code Quality Over Quantity**: Clean, well-documented code enables better collaboration than extensive but messy implementations
+
+### Future Improvements
+- **Enhanced User Authentication**: Two-factor authentication and social login options
+- **Payment Integration**: Stripe or PayPal integration for complete checkout flow
+- **Admin Dashboard**: Content management system for product and inventory management
+- **Advanced Filtering**: More sophisticated product search and recommendation algorithms
+- **Progressive Web App**: Offline functionality and mobile app-like experience
+
+---
+
+## License
+
+This project is licensed under the MIT License. See LICENSE for details.
+
+Copyright © 2025 Vinoir Development Team. All rights reserved.
+
+---
 
 ## Authors
 
-The Project Authors are 
-- [Tristan Leech](https://github.com/TristanLeech)
-- [Corbyn Robinson](https://github.com/corbyn-jpg)
-- [Mario Ojo](https://github.com/MarioOjo)
+### Development Team
 
+**Tristan Leech**
+- GitHub: https://github.com/TristanLeech
+- Role: Backend development, database architecture, API integration
 
-## Project Description
+**Chloe Robinson**
+- GitHub: https://github.com/corbyn-jpg
+- Email: 241040@virtualwindow.co.za
+- LinkedIn: www.linkedin.com/in/chloe-robinson-25b123351
+- Role: Project foundation, frontend architecture, visual design system, homepage development
 
-This project is a react based website for the fictional luxury perfume company Vinoir. The site features a fully functional digital marketplace, with store pages alongside basic information and layout pages, as well as a user and product database, allowing more products and users to be added and viewed. Additionally, there is a visual user authentification system, wherein the user keys in a unique series of emojis chosen at account creation.
+**Mario Ojo**
+- GitHub: https://github.com/MarioOjo
+- Role: Frontend development, component implementation, user interface features
 
-The site uses a component-forward react framework and is coded mainly in JavaScript, with CSS used for styling, and HTML for basic setup. Namely;
- - JavaScript - 78% 
- - CSS - 21%
- - HTML - 1%
+### Individual Contribution Statement
 
-The [Github Repo](https://github.com/corbyn-jpg/summative-vinoir) can be found at
+This project was developed collaboratively with each team member contributing according to their strengths and availability. My specific contributions focused on establishing the technical foundation and visual design system that enabled efficient parallel development and a cohesive final product.
 
- [![Github](https://logoeps.com/wp-content/uploads/2014/04/24233-github-logo-in-a-rounded-square-icon-vector-icon-vector-eps.png)](https://github.com/corbyn-jpg/summative-vinoir)
+---
 
-For more information or to request Collaborator access please contact a project developer
-## Dependencies and Startup Management
-
-After downloading the repository, these are the steps to start the site.
- - Install necessary dependancies
- The dependancies listed below need to be installed through the terminal.
-
-    "@emotion/styled"
-    "@mui/icons-material"
-    "@mui/material"
-    "@testing-library/dom"
-    "@testing-library/jest-dom"
-    "@testing-library/react"
-    "@testing-library/user-event"
-    "axios"
-    "emailjs-com"
-    "react"
-    "react-dom"
-    "react-lazy-load-image-component"
-    "react-router-dom"
-    "react-scripts"
-    "react-window"
-    "web-vitals"
-    "swiper"
-
- - Start the back end server
- Open an integrated terminal from the "mem-backend" file, and type "npm start". 
-On successful startup the terminal logs  
- 🚀 Server running on port 5000
-
-✅ MongoDB connected successfully
- - Start the front end
- Open an integrated terminal from the "frontend/vinoir" file, and type "npm start". The site will now open in a browser window
 ## Acknowledgements
 
-This project acknowledges the use of the following resources
+This project was developed as part of the DV200 curriculum and benefited from numerous resources and support systems:
 
- - MUI React component library found at [MUI](https://mui.com/)
- - Tsungai Katsuro, Lecturer
- - Open Window Intitute - [OWI](https://www.openwindow.co.za/)
+### Educational Framework
+- **Open Window Institute** - DV200 course structure and learning objectives
+- **Tsungai Katsuro** - Course instructor providing guidance and project oversight
+- **MERN Stack Documentation** - Official documentation for all core technologies
 
-## Project Description
+### Technologies & Libraries
+- **Material-UI (MUI)** - Comprehensive React component library that accelerated UI development
+- **MongoDB** - Flexible NoSQL database for product and user data
+- **Express.js** - Minimalist web framework for robust API development
+- **React** - Component-based library for interactive user interfaces
 
-This project is a react based website for the fictional luxury perfume company Vinoir. The site features a fully functional digital marketplace, with store pages alongside basic information and layout pages, as well as a user and product database, allowing more products and users to be added and viewed. Additionally, there is a visual user authentification system, wherein the user keys in a unique series of emojis chosen at account creation.
+### Development Tools
+- **Git & GitHub** - Version control and collaborative development platform
+- **VS Code** - Integrated development environment with React extensions
+- **Chrome DevTools** - Debugging and performance optimization
+- **Postman** - API testing and development
 
-The site uses a component-forward react framework and is coded mainly in JavaScript, with CSS used for styling, and HTML for basic setup. Namely;
- - JavaScript - 78% 
- - CSS - 21%
- - HTML - 1%
+### Support & Collaboration
+- **Development Team** - Collaborative problem-solving and knowledge sharing
+- **Peer Reviewers** - Code feedback and quality assurance
+- **Open Source Community** - Libraries and tools that enabled rapid development
 
-The [Github Repo](https://github.com/corbyn-jpg/summative-vinoir) can be found at
+### Special Thanks
 
- [![Github](https://logoeps.com/wp-content/uploads/2014/04/24233-github-logo-in-a-rounded-square-icon-vector-icon-vector-eps.png)](https://github.com/corbyn-jpg/summative-vinoir)
+To the entire development team for their dedication and collaboration in delivering a comprehensive e-commerce solution, and to the instructional team for providing the framework and support that made this learning experience possible.
 
-For more information or to request Collaborator access please contact a project developer
-## General Command Information
-
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
