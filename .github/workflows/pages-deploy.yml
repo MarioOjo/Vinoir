@@ -1,0 +1,31 @@
+name: Build and Deploy frontend to GitHub Pages
+on:
+  push:
+    branches:
+      - back-main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: Install dependencies
+        working-directory: frontend/vinoir
+        run: npm ci
+      - name: Build
+        working-directory: frontend/vinoir
+        run: npm run build --if-present
+      - name: Upload artifact for GitHub Pages
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: frontend/vinoir/build
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v1
