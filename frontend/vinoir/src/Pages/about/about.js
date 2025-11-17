@@ -30,7 +30,8 @@ import marioImg from "../../assets/founders/mario.jpg";
 import corbynImg from "../../assets/founders/corbyn.jpg";
 import tristianImg from "../../assets/founders/tristian.jpg";
 import heroImage from "../../assets/spritz.jpeg";
-import heroVideo from "../../assets/Scents.mp4";
+// Use hosted video to avoid build/deploy issues with local media files
+const heroVideoUrl = "https://res.cloudinary.com/dx8wt3el4/video/upload/v1763365244/Scents_hmtflv.mp4";
 
 const AboutPage = () => {
   // Luxury Brand Statistics
@@ -96,8 +97,15 @@ const AboutPage = () => {
           backgroundImage={heroImage}
           buttonText={"CONTACT"}
           buttonLink={"/contact"}
-          videoSrc={heroVideo}
+          videoSrc={heroVideoUrl}
         />
+        {/* Embedded video preview for Scents.mp4 */}
+        <div style={{ margin: "2rem 0" }}>
+          <video width="100%" controls>
+            <source src={heroVideoUrl} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
       </div>
 
       {/* Mission Section */}
