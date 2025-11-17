@@ -1,0 +1,4 @@
+exclude:
+  - "mem-backend"
+  - "node_modules"
+  - "frontend/vinoir/node_modules"

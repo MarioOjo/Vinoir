@@ -1,0 +1,5 @@
+# Prevent Jekyll from scanning backend and node modules
+mem-backend/
+node_modules/
+frontend/vinoir/node_modules/
+**/.cache/
