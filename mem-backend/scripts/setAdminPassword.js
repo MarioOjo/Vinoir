@@ -44,7 +44,9 @@ async function run() {
       process.exit(1);
     }
 
-    const newPass = generateEmojiPassword(3);
+    // Allow providing a specific password via env var or argv[3]
+    const provided = process.env.PASSWORD || process.argv[3];
+    const newPass = provided || generateEmojiPassword(3);
     user.password = newPass; // will be hashed by pre-save hook
     user.role = 'admin';
     await user.save();
