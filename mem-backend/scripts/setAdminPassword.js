@@ -38,10 +38,16 @@ async function run() {
 
   try {
     await mongoose.connect(process.env.MONGO_URI, {});
-    const user = await User.findOne({ email: email.toLowerCase() }).select('+password');
+    let user = await User.findOne({ email: email.toLowerCase() }).select('+password');
+    // If user doesn't exist, create one
     if (!user) {
-      console.error(`User not found for email: ${email}`);
-      process.exit(1);
+      user = new User({
+        name: 'Admin',
+        email: email.toLowerCase(),
+        password: 'placeholder', // will be replaced below
+        role: 'admin',
+        wishlist: []
+      });
     }
 
     // Allow providing a specific password via env var or argv[3]
@@ -51,7 +57,7 @@ async function run() {
     user.role = 'admin';
     await user.save();
 
-    console.log(`✅ Promoted ${email} to admin and set new emoji password:`);
+    console.log(`✅ Admin user ensured: ${email} (password set)`);
     console.log(newPass);
 
     // Save the generated password to a local dotfile (workspace only)

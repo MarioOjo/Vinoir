@@ -109,6 +109,7 @@ const Login = () => {
         Welcome Back
       </Typography>
 
+
       <form onSubmit={handleSubmit}>
         <TextField
           label="Email Address"
@@ -149,6 +150,30 @@ const Login = () => {
           }}
         >
           {isLoading ? "Logging in..." : "Login"}
+        </Button>
+
+        <Button
+          type="button"
+          variant="outlined"
+          fullWidth
+          sx={{
+            padding: "0.7rem",
+            background: "#f5f5f5",
+            color: "#333",
+            fontWeight: "bold",
+            borderRadius: "8px",
+            marginTop: "1rem",
+            border: "2px dashed #bbb",
+            "&:hover": {
+              background: "#e0e0e0",
+            },
+          }}
+          onClick={() => {
+            setEmail('admin@gmail.com');
+            setEmojiPassword(['🌿', '✨', '🍇']);
+          }}
+        >
+          Quick Fill Admin
         </Button>
       </form>
 

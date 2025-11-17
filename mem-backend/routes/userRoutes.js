@@ -51,10 +51,16 @@ router.post('/login', async (req, res) => {
   try {
     // Need to explicitly select password field since it's excluded by default
     const user = await User.findOne({ email }).select('+password');
-    if (!user) return res.status(401).json({ message: 'Invalid credentials' });
+    if (!user) {
+      console.error(`Login failed: user not found for email ${email}`);
+      return res.status(401).json({ message: 'Invalid credentials' });
+    }
 
     const isMatch = await user.comparePassword(password);
-    if (!isMatch) return res.status(401).json({ message: 'Invalid credentials' });
+    if (!isMatch) {
+      console.error(`Login failed: password mismatch for email ${email}`);
+      return res.status(401).json({ message: 'Invalid credentials' });
+    }
 
     const token = generateToken(user);
 
@@ -64,7 +70,7 @@ router.post('/login', async (req, res) => {
     });
   } catch (err) {
     console.error('Login error:', err);
-    res.status(500).json({ message: 'Server error' });
+    res.status(500).json({ message: 'Server error', error: err?.message, stack: err?.stack });
   }
 });
 
