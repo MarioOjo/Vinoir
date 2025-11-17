@@ -65,3 +65,4 @@
 # Temporary folders
 **/tmp/
 **/temp/
+**/.cache/
