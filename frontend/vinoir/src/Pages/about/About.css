@@ -17,7 +17,9 @@
       rgba(39, 39, 39, 0.7),
       rgba(39, 39, 39, 0.3)
     ),
-    url("../../assets/Scents.mp4") fit no-repeat;
+    url("../../assets/spritz.jpeg");
+  background-size: cover;
+  background-position: center;
 }
 
 /* Mission section */
