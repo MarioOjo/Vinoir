@@ -20,15 +20,9 @@ import {
 } from "@mui/material";
 import { 
   PersonOutline, 
-  EmailOutlined, 
-  LocationOnOutlined,
-  PhoneOutlined,
-  LockOutlined,
   ShoppingBagOutlined,
   FavoriteOutlined,
-  SettingsOutlined,
   EditOutlined,
-  CakeOutlined,
   SecurityOutlined
 } from "@mui/icons-material";
 import { Link, useNavigate } from "react-router-dom";
@@ -40,7 +34,7 @@ function AccountPage() {
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [recentOrders, setRecentOrders] = useState([]);
-  const { user, isAuthenticated } = useAuth();
+  const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {

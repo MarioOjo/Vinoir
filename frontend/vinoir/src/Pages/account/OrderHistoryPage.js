@@ -11,12 +11,7 @@ import {
   Fade,
   Chip,
   Avatar,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
+  // Table components removed (not used in this page)
   Collapse,
   IconButton,
   Tab,
@@ -42,7 +37,6 @@ import {
 } from '@mui/icons-material';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
-import axios from 'axios';
 
 function OrderHistoryPage() {
   const [orders, setOrders] = useState([]);
@@ -136,12 +130,13 @@ function OrderHistoryPage() {
       return;
     }
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     fetchOrderHistory();
   }, [isAuthenticated, navigate]);
 
   const fetchOrderHistory = async () => {
     try {
-      const token = localStorage.getItem('vinoir_token');
+      // token not currently used; remove to avoid unused-variable warning
       // For now, use mock data - you can replace with actual API call
       // const response = await axios.get('http://localhost:5000/api/orders/history', {
       //   headers: { Authorization: `Bearer ${token}` }

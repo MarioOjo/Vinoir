@@ -5,9 +5,7 @@ import {
   Typography, 
   Button, 
   Container,
-  Grid,
-  Card,
-  CardContent
+  Grid
 } from "@mui/material";
 import { 
   ArrowForward, 
@@ -16,11 +14,9 @@ import {
   PlayArrow
 } from "@mui/icons-material";
 import { Link } from "react-router-dom";
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectCoverflow, Autoplay, Pagination } from 'swiper/modules';
+// Swiper imports removed (not used on this page)
 import PromoSection from "../Components/PromoSection";
 import ShopSection from "../Components/ShopSection";
-import HeroSection from "../Components/HeroSection";
 
 // Import Swiper styles
 import 'swiper/css';

@@ -62,7 +62,7 @@ function PersonalDataPage() {
   const [error, setError] = useState('');
   const [editingSection, setEditingSection] = useState(null);
   
-  const { user, isAuthenticated } = useAuth();
+  const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
   const southAfricanProvinces = [

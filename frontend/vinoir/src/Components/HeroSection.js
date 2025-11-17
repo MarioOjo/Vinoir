@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 function HeroSection({ title, subtitle, buttonText, buttonLink, videoSrc }) {
   // Enhanced luxury background - using one of your beautiful fragrance images
   // Try both relative and absolute paths to ensure it loads
-  const heroImage = process.env.PUBLIC_URL + "/images/dior5.jpeg" || "/images/dior5.jpeg";
+  // heroImage was unused; background image is provided directly in the JSX below
 
   return (
     <Box
