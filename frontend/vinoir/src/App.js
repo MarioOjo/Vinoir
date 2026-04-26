@@ -134,7 +134,7 @@ function AppInner() {
 
 export default function App() {
   return (
-    <Router>
+    <Router basename="/Vinoir">
       <ErrorBoundary>
         <AppInner />
       </ErrorBoundary>
