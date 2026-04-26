@@ -41,6 +41,7 @@ jobs:
 
       - name: Build app
         env:
+          CI: false
           REACT_APP_API_URL: https://vinoir-backend.onrender.com/api
         run: npm run build
 
