@@ -12,6 +12,7 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^13.5.0",
+    "@emailjs/browser": "^4.4.0",
     "axios": "^1.9.0",
     "dependencies": "^0.0.1",
     "emailjs-com": "^3.2.0",
