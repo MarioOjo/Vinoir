@@ -169,6 +169,36 @@
 }
 
 /* Responsive */
+@media (max-width: 900px) {
+  .vinoir-product-card, .product-card {
+    padding: 16px;
+  }
+
+  .product-image {
+    height: 260px;
+  }
+
+  .product-actions {
+    flex-wrap: wrap;
+  }
+
+  .product-actions .MuiButton-root {
+    flex: 1 1 100%;
+  }
+}
+
 @media (max-width: 600px) {
+  .vinoir-product-card, .product-card {
+    padding: 14px;
+  }
+
   .product-image { height: 220px; }
+
+  .product-title {
+    font-size: 1rem;
+  }
+
+  .product-category {
+    font-size: 0.82rem;
+  }
 }

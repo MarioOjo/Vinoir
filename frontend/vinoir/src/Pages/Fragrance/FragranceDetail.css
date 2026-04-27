@@ -28,6 +28,20 @@
 
 @media (max-width: 980px){
   .product-grid{ grid-template-columns: 1fr; }
+
+  .product-actions{
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .product-actions .MuiButton-root,
+  .product-actions .MuiIconButton-root{
+    width: 100%;
+  }
+
+  .main-image-wrapper{
+    min-height: 320px;
+  }
 }
 
 /* Gallery */
@@ -167,6 +181,23 @@
 
 /* Small screens */
 @media (max-width: 520px){
+  .product-detail{
+    margin: 20px auto 12px;
+    padding: 16px;
+  }
+
+  .product-title{
+    font-size: 1.5rem;
+  }
+
+  .product-price{
+    font-size: 1.2rem;
+  }
+
+  .main-image-wrapper{
+    min-height: 260px;
+  }
+
   .thumb-btn img{ width: 64px; height: 48px; }
   .product-info{ padding: 16px; }
 }

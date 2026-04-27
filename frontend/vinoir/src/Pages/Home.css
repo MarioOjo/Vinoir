@@ -218,12 +218,18 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .hero-section {
+    height: auto;
+    min-height: 92svh;
+    padding-bottom: 2.5rem;
+  }
+
   .hero-title {
     font-size: 3rem !important;
   }
   
   .featured-showcase {
-    margin: 0 1rem !important;
+    margin: 0 0.75rem !important;
   }
   
   .hero-buttons {
@@ -233,12 +239,21 @@
 }
 
 @media (max-width: 480px) {
+  .hero-section {
+    min-height: auto;
+    padding: 5rem 0 2.5rem;
+  }
+
   .hero-title {
-    font-size: 2.5rem !important;
+    font-size: 2.25rem !important;
   }
   
   .collection-title {
-    font-size: 2.5rem !important;
+    font-size: 2.2rem !important;
+  }
+
+  .featured-showcase {
+    margin: 0 0.5rem !important;
   }
 }
 

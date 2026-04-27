@@ -53,3 +53,20 @@
   color: #ffffff;
   transform: translateY(-2px);
 }
+
+@media (max-width: 600px) {
+  .account-page-container {
+    margin: 1.25rem auto;
+    padding: 1.25rem;
+    border-radius: 10px;
+  }
+
+  .account-page-heading {
+    font-size: 1.6rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .account-page-button {
+    font-size: 0.95rem;
+  }
+}
