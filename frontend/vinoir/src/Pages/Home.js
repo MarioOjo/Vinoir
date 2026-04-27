@@ -30,6 +30,7 @@ function Home() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [featuredProduct, setFeaturedProduct] = useState(null);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -61,6 +62,30 @@ function Home() {
 
     fetchProducts();
   }, []);
+
+  // Set up featured product rotation
+  useEffect(() => {
+    if (products.length === 0) return;
+    
+    // Filter products that are marked as featured
+    const featuredProducts = products.filter(p => p.featured);
+    
+    if (featuredProducts.length === 0) return;
+    
+    // Function to select random featured product
+    const selectRandomFeatured = () => {
+      const randomIndex = Math.floor(Math.random() * featuredProducts.length);
+      setFeaturedProduct(featuredProducts[randomIndex]);
+    };
+    
+    // Select initial featured product
+    selectRandomFeatured();
+    
+    // Rotate every 30 seconds
+    const rotationInterval = setInterval(selectRandomFeatured, 30000);
+    
+    return () => clearInterval(rotationInterval);
+  }, [products]);
 
   if (loading) {
     return (
@@ -237,57 +262,60 @@ function Home() {
             
             <Grid item xs={12} md={5}>
               <Box sx={{ textAlign: 'center', position: 'relative' }}>
-                {/* Floating Product Showcase */}
-                <Box
-                  sx={{
-                    background: 'linear-gradient(135deg, rgba(139, 90, 158, 0.15) 0%, rgba(230, 212, 120, 0.08) 50%, rgba(144, 212, 167, 0.1) 100%)',
-                    borderRadius: '24px',
-                    p: 4,
-                    backdropFilter: 'blur(20px)',
-                    border: '1px solid rgba(139, 90, 158, 0.3)',
-                    animation: 'elegantFloat 6s ease-in-out infinite',
-                    boxShadow: '0 20px 40px rgba(59, 47, 92, 0.2)'
-                  }}
-                  className="floating-showcase"
-                >
-                  <Typography 
-                    variant="h6" 
-                    sx={{ 
-                      color: 'white', 
-                      mb: 2,
-                      fontFamily: '"Playfair Display", serif'
-                    }}
-                  >
-                    Featured This Month
-                  </Typography>
+                {/* Floating Product Showcase - Dynamic Featured Product */}
+                {featuredProduct && (
                   <Box
                     sx={{
-                      width: 200,
-                      height: 200,
-                      mx: 'auto',
-                      mb: 2,
-                      borderRadius: '16px',
-                      overflow: 'hidden',
-                      background: 'rgba(255,255,255,0.1)'
+                      background: 'linear-gradient(135deg, rgba(139, 90, 158, 0.15) 0%, rgba(230, 212, 120, 0.08) 50%, rgba(144, 212, 167, 0.1) 100%)',
+                      borderRadius: '24px',
+                      p: 4,
+                      backdropFilter: 'blur(20px)',
+                      border: '1px solid rgba(139, 90, 158, 0.3)',
+                      animation: 'elegantFloat 6s ease-in-out infinite',
+                      boxShadow: '0 20px 40px rgba(59, 47, 92, 0.2)',
+                      transition: 'all 0.6s ease-in-out'
                     }}
+                    className="floating-showcase"
                   >
-                    <img
-                      src="/images/dior4.jpeg"
-                      alt="Featured Fragrance"
-                      style={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover'
+                    <Typography 
+                      variant="h6" 
+                      sx={{ 
+                        color: 'white', 
+                        mb: 2,
+                        fontFamily: '"Playfair Display", serif'
                       }}
-                    />
+                    >
+                      Featured This Month
+                    </Typography>
+                    <Box
+                      sx={{
+                        width: 200,
+                        height: 200,
+                        mx: 'auto',
+                        mb: 2,
+                        borderRadius: '16px',
+                        overflow: 'hidden',
+                        background: 'rgba(255,255,255,0.1)'
+                      }}
+                    >
+                      <img
+                        src={featuredProduct.image}
+                        alt={featuredProduct.name}
+                        style={{
+                          width: '100%',
+                          height: '100%',
+                          objectFit: 'cover'
+                        }}
+                      />
+                    </Box>
+                    <Typography variant="h6" sx={{ color: 'white', mb: 1 }}>
+                      {featuredProduct.name}
+                    </Typography>
+                    <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.8)' }}>
+                      {featuredProduct.description}
+                    </Typography>
                   </Box>
-                  <Typography variant="h6" sx={{ color: 'white', mb: 1 }}>
-                    Élégance Noir
-                  </Typography>
-                  <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.8)' }}>
-                    A mysterious blend of vanilla and amber
-                  </Typography>
-                </Box>
+                )}
               </Box>
             </Grid>
           </Grid>
