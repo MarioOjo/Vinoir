@@ -1,5 +1,6 @@
 import React, { lazy, Suspense, memo, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import "./App.css";
 
 // Context Providers
 import { AuthProvider } from "./context/AuthContext";
@@ -140,4 +141,4 @@ export default function App() {
       </ErrorBoundary>
     </Router>
   );
-}// Updated 04/27/2026 19:58:18
+}
