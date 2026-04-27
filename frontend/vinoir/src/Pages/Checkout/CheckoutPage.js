@@ -126,8 +126,8 @@ const CheckoutPage = () => {
 
   if (cart.length === 0) {
     return (
-      <Box sx={{ textAlign: "center", p: 4 }}>
-        <Typography variant="h5" sx={{ mb: 2 }}>
+      <Box sx={{ textAlign: "center", p: { xs: 2, md: 4 }, maxWidth: 900, mx: "auto" }}>
+        <Typography variant="h5" sx={{ mb: 2, fontSize: { xs: "1.35rem", md: "1.5rem" } }}>
           Your cart is empty
         </Typography>
         <Button
@@ -146,8 +146,8 @@ const CheckoutPage = () => {
   }
 
   return (
-    <Box sx={{ p: 3, maxWidth: 1200, margin: "0 auto" }}>
-      <Typography variant="h4" sx={{ mb: 4, fontWeight: "bold" }}>
+    <Box sx={{ px: { xs: 1.5, md: 3 }, py: { xs: 2, md: 3 }, maxWidth: 1200, margin: "0 auto" }}>
+      <Typography variant="h4" sx={{ mb: { xs: 2.5, md: 4 }, fontWeight: "bold", fontSize: { xs: "2rem", md: "2.5rem" } }}>
         Checkout
       </Typography>
 
@@ -272,7 +272,7 @@ const CheckoutPage = () => {
 
           {/* Order Summary Column */}
           <Grid item xs={12} md={5}>
-            <Paper sx={{ p: 3, borderRadius: 2, position: "sticky", top: 20 }}>
+            <Paper sx={{ p: { xs: 2, md: 3 }, borderRadius: 2, position: { md: "sticky" }, top: { md: 20 }, mt: { xs: 1, md: 0 } }}>
               <Typography variant="h6" sx={{ mb: 2 }}>
                 Order Summary
               </Typography>
@@ -331,6 +331,7 @@ const CheckoutPage = () => {
                   backgroundColor: "#146e3a",
                   "&:hover": { backgroundColor: "#0d5a2c" },
                   py: 1.5,
+                  fontSize: { xs: "0.95rem", md: "1rem" },
                 }}
               >
                 {loading ? (

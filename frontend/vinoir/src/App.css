@@ -281,9 +281,28 @@ img { display: block; max-width: 100%; height: auto; }
 /* Responsive tweaks */
 @media (max-width: 900px) {
   main { padding: 18px; }
+  .hero {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero .hero-text p {
+    max-width: none;
+  }
+
   .product-image { height: 260px; }
 }
 @media (max-width: 600px) {
+  main { padding: 14px; }
+
+  .hero {
+    padding: 22px 18px;
+  }
+
+  .hero .hero-text h1 {
+    font-size: clamp(24px, 10vw, 34px);
+  }
+
   .product-image { height: 220px; }
 }
 

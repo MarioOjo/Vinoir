@@ -226,4 +226,33 @@
     flex-direction: column;
     gap: 10px;
   }
+
+  .newsletter-input,
+  .newsletter-button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-hero {
+    padding: 88px 0 48px 0;
+  }
+
+  .hero-title {
+    font-size: 2.1rem;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+  }
+
+  .form-container {
+    padding: 1.25rem;
+    margin: 0 0.75rem;
+  }
+
+  .newsletter-section {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+  }
 }
