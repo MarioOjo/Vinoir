@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   Container,
   Typography,
@@ -11,7 +11,6 @@ import {
   Fade,
   Chip,
   Avatar,
-  // Table components removed (not used in this page)
   Collapse,
   IconButton,
   Tab,
@@ -30,13 +29,82 @@ import {
   ExpandMore,
   ExpandLess,
   TrackChangesOutlined,
-  StarOutlined,
   RefreshOutlined,
   ReceiptOutlined,
   HistoryOutlined
 } from '@mui/icons-material';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
+
+const mockOrders = [
+  {
+    id: 'VIN-2024-001',
+    date: '2024-01-15',
+    status: 'delivered',
+    total: 12500,
+    items: [
+      {
+        id: 1,
+        name: 'Midnight Elegance',
+        price: 8500,
+        quantity: 1,
+        image: '/images/dior1.jpg'
+      },
+      {
+        id: 2,
+        name: 'Royal Essence',
+        price: 4000,
+        quantity: 1,
+        image: '/images/dior2.jpg'
+      }
+    ],
+    shipping: {
+      address: '123 Luxury Lane, Sandton, Johannesburg',
+      method: 'Express Delivery',
+      tracking: 'VIN123456789'
+    }
+  },
+  {
+    id: 'VIN-2024-002',
+    date: '2024-01-10',
+    status: 'shipped',
+    total: 6500,
+    items: [
+      {
+        id: 3,
+        name: 'Golden Sunset',
+        price: 6500,
+        quantity: 1,
+        image: '/images/dior3.jpeg'
+      }
+    ],
+    shipping: {
+      address: '456 Elite Street, Cape Town',
+      method: 'Standard Delivery',
+      tracking: 'VIN987654321'
+    }
+  },
+  {
+    id: 'VIN-2024-003',
+    date: '2024-01-05',
+    status: 'processing',
+    total: 15000,
+    items: [
+      {
+        id: 4,
+        name: 'Diamond Collection Set',
+        price: 15000,
+        quantity: 1,
+        image: '/images/dior4.jpeg'
+      }
+    ],
+    shipping: {
+      address: '789 Premium Plaza, Durban',
+      method: 'Express Delivery',
+      tracking: null
+    }
+  }
+];
 
 function OrderHistoryPage() {
   const [orders, setOrders] = useState([]);
@@ -50,107 +118,19 @@ function OrderHistoryPage() {
     totalSpent: 0
   });
   
-  const { user, isAuthenticated } = useAuth();
+  const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
-  // Mock order data for demonstration
-  const mockOrders = [
-    {
-      id: 'VIN-2024-001',
-      date: '2024-01-15',
-      status: 'delivered',
-      total: 12500,
-      items: [
-        {
-          id: 1,
-          name: 'Midnight Elegance',
-          price: 8500,
-          quantity: 1,
-          image: '/images/dior1.jpg'
-        },
-        {
-          id: 2,
-          name: 'Royal Essence',
-          price: 4000,
-          quantity: 1,
-          image: '/images/dior2.jpg'
-        }
-      ],
-      shipping: {
-        address: '123 Luxury Lane, Sandton, Johannesburg',
-        method: 'Express Delivery',
-        tracking: 'VIN123456789'
-      }
-    },
-    {
-      id: 'VIN-2024-002',
-      date: '2024-01-10',
-      status: 'shipped',
-      total: 6500,
-      items: [
-        {
-          id: 3,
-          name: 'Golden Sunset',
-          price: 6500,
-          quantity: 1,
-          image: '/images/dior3.jpeg'
-        }
-      ],
-      shipping: {
-        address: '456 Elite Street, Cape Town',
-        method: 'Standard Delivery',
-        tracking: 'VIN987654321'
-      }
-    },
-    {
-      id: 'VIN-2024-003',
-      date: '2024-01-05',
-      status: 'processing',
-      total: 15000,
-      items: [
-        {
-          id: 4,
-          name: 'Diamond Collection Set',
-          price: 15000,
-          quantity: 1,
-          image: '/images/dior4.jpeg'
-        }
-      ],
-      shipping: {
-        address: '789 Premium Plaza, Durban',
-        method: 'Express Delivery',
-        tracking: null
-      }
-    }
-  ];
-
-  useEffect(() => {
-    if (!isAuthenticated) {
-      navigate('/');
-      return;
-    }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    fetchOrderHistory();
-  }, [isAuthenticated, navigate]);
-
-  const fetchOrderHistory = async () => {
+  const fetchOrderHistory = useCallback(async () => {
     try {
-      // token not currently used; remove to avoid unused-variable warning
-      // For now, use mock data - you can replace with actual API call
-      // const response = await axios.get('http://localhost:5000/api/orders/history', {
-      //   headers: { Authorization: `Bearer ${token}` }
-      // });
-      
-      // Use mock data for demonstration
+      // For now, use mock data - replace with actual API call when needed.
       setTimeout(() => {
         setOrders(mockOrders);
-        
-        // Calculate stats
+
         const stats = mockOrders.reduce((acc, order) => {
           acc.total += 1;
           acc.totalSpent += order.total;
-          
+
           switch (order.status) {
             case 'processing':
               acc.pending += 1;
@@ -161,19 +141,27 @@ function OrderHistoryPage() {
             default:
               break;
           }
-          
+
           return acc;
         }, { total: 0, pending: 0, delivered: 0, totalSpent: 0 });
-        
+
         setOrderStats(stats);
         setLoading(false);
       }, 1000);
-      
     } catch (error) {
       console.error('Error fetching order history:', error);
       setLoading(false);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate('/');
+      return;
+    }
+
+    fetchOrderHistory();
+  }, [isAuthenticated, navigate, fetchOrderHistory]);
 
   const getStatusColor = (status) => {
     switch (status) {
