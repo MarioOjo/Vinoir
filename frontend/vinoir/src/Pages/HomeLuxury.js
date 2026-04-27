@@ -355,7 +355,7 @@ const HomeLuxury = () => {
                       }}
                     >
                       <img
-                        src={featuredProduct.image}
+                        src={featuredProduct.images?.[0]?.url}
                         alt={featuredProduct.name}
                         style={{
                           width: '100%',
