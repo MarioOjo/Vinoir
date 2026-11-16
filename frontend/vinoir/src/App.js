@@ -10,6 +10,7 @@ import { WishlistProvider } from "./context/WishlistContext";
 // Global Components
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
+import ServerWakeNotice from "./Components/ServerWakeNotice";
 
 // Lazy-loaded Pages (improves initial bundle)
 const Home = lazy(() => import("./Pages/Home"));
@@ -87,6 +88,7 @@ function AppInner() {
         <CartProvider>
           <WishlistProvider>
             <Navbar />
+            <ServerWakeNotice />
             <ScrollToTop />
             <main style={{ flexGrow: 1, backgroundColor: "#2a4936" }}>
               <Suspense fallback={<div style={{ padding: 24 }}>Loading...</div>}>
