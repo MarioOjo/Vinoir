@@ -12,7 +12,8 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 const allowedOrigins = [
-  process.env.FRONTEND_URL, // e.g. https://your-frontend.com
+  // One or more front-end addresses, separated by commas (e.g. the GitHub Pages and Vercel sites)
+  ...(process.env.FRONTEND_URL || '').split(',').map((origin) => origin.trim().replace(/\/$/, '')),
   'http://localhost:3000'
 ].filter(Boolean);
 
