@@ -1,0 +1,13 @@
+{
+  "framework": "create-react-app",
+  "buildCommand": "npm run build",
+  "outputDirectory": "build",
+  "build": {
+    "env": {
+      "PUBLIC_URL": "/",
+      "REACT_APP_API_URL": "https://vinoir-backend.onrender.com/api",
+      "CI": "false"
+    }
+  },
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+}

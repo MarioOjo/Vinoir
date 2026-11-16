@@ -137,7 +137,7 @@ function AppInner() {
 
 export default function App() {
   return (
-    <Router basename="/Vinoir">
+    <Router basename={process.env.PUBLIC_URL || "/"}>
       <ErrorBoundary>
         <AppInner />
       </ErrorBoundary>
